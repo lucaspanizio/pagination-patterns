@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { getData, TData } from '../../services/api'
+import { getToDos, TData } from '../../services/api'
 import { Skeleton } from '../../components/Skeleton'
 import * as S from './styles'
 
@@ -12,12 +12,11 @@ export const LoadMore: React.FC = () => {
 
   const fetchData = useCallback(() => {
     setLoading(true)
-    setTimeout(async () => {
-      await getData(page, limit)
-        .then((result) => setData((prevData) => [...prevData, ...result]))
-        .catch((error) => console.error(error))
-        .finally(() => setLoading(false))
-    }, 1000)
+
+    getToDos(page, limit)
+      .then((result) => setData((prevData) => [...prevData, ...result]))
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false))
   }, [page, limit])
 
   useEffect(() => {
@@ -51,7 +50,7 @@ export const LoadMore: React.FC = () => {
         {loading && <Skeleton lines={limit} />}
       </S.List>
 
-      {canShowButton && <S.Button onClick={handleShowMore}>Ver Mais</S.Button>}
+      {canShowButton && <S.Button onClick={handleShowMore}>Show More</S.Button>}
     </S.Container>
   )
 }

@@ -1,3 +1,5 @@
+import { delay } from '../utils/delay'
+
 export type TData = {
   userId: number
   id: number
@@ -5,17 +7,24 @@ export type TData = {
   completed: boolean
 }
 
-export const getData = async (
+export const getToDos = async (
   page: number,
   limit: number
 ): Promise<TData[]> => {
-  const response = await fetch(
+  // Simula um atraso de 1 segundo antes de fazer a requisição
+  await delay(1000)
+
+  return fetch(
     `https://jsonplaceholder.typicode.com/todos?_page=${page}&_limit=${limit}`
   )
-    .then((res) => res.json())
-    .catch((err) => {
-      console.error(`Fetch error: ${err.message}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      return response.json()
     })
-
-  return response
+    .catch((error) => {
+      console.error(`Fetch error: ${error.message}`)
+      return []
+    })
 }
