@@ -102,6 +102,17 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-family: 'Jet Brains', Arial, Helvetica, sans-serif;
   }  
+
+  #root {
+    height: 100%;
+    overflow: auto; /* Permite rolar o conteúdo */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE e Edge */
+  }
+
+  #root::-webkit-scrollbar {
+    display: none; /* Chrome e Safari */
+  }
 `
 
 export default GlobalStyle
