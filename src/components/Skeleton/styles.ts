@@ -9,7 +9,7 @@ const shimmer = keyframes`
   }
 `
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3.25px;
@@ -17,12 +17,15 @@ const Wrapper = styled.div`
   margin-bottom: 3px;
 `
 
-const Item = styled.div`
+type ItemProps = {
+  width?: string
+  height?: string
+}
+
+export const Item = styled.div<ItemProps>`
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   animation: ${shimmer} 1.2s ease-in-out infinite;
-  height: 0.95rem;
-  width: 100%;
+  height: ${({ height }) => height ?? '0.95rem'};
+  width: ${({ width }) => width ?? '100%'};
   border-radius: 4px;
 `
-
-export { Wrapper, Item }
