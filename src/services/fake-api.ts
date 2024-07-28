@@ -1,4 +1,4 @@
-import { loremIpsumChunkGenerator } from '../utils/loremIpsumChunkGenerator'
+import { generateLoremChunk } from '../utils/generateLoremChunk'
 
 type TResponseLoremIpsum = { id: number; text: string }[]
 
@@ -10,7 +10,7 @@ export const fetchLoremIpsum = async (
       // Gerando um array de itens com texto Lorem Ipsum variado
       const newItems = Array.from({ length: 30 }, (_, i) => ({
         id: (page - 1) * 10 + i + 1,
-        text: loremIpsumChunkGenerator(1),
+        text: generateLoremChunk(1),
       }))
 
       resolve(newItems)

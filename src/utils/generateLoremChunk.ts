@@ -18,16 +18,15 @@ const LOREM_BASE = [
  *
  * @param {number} paragraphs - O número de parágrafos de Lorem Ipsum a serem gerados. Cada parágrafo é formado por trechos aleatórios do array base.
  * @returns {string} Um texto concatenado composto pelos parágrafos gerados. Os parágrafos são separados por um espaço.
- *
  * @example
- * const generatedText = loremIpsumChunkGenerator(3);
+ * const generatedText = generateLoremChunk(3);
  * console.log(generatedText);
  * // Output example:
  * // "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac orci libero. Donec vehicula bibendum vestibulum.
  * // Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
  * // Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
  */
-export const loremIpsumChunkGenerator = (paragraphs: number): string => {
+export const generateLoremChunk = (paragraphs: number): string => {
   return Array.from(
     { length: paragraphs },
     () => LOREM_BASE[Math.floor(Math.random() * LOREM_BASE.length)]
