@@ -1,9 +1,10 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 import { Layout } from '../components/Layout'
 import { InfiniteScroll } from '../pages/Infinite-Scroll'
-import { Pagination } from '../pages/Pagination'
+import { PaginationPage } from '../pages/Pagination'
 import { LoadMore } from '../pages/Load-More'
 import { NoMatch } from '../pages/NoMatch'
+import ErrorBoundary from '../utils/ErrorBondary'
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +21,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'pagination',
-        element: <Pagination />,
+        element: (
+          <ErrorBoundary>
+            <PaginationPage />
+          </ErrorBoundary>
+        ),
       },
       {
         index: true,
