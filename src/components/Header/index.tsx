@@ -15,7 +15,7 @@ export const Header: React.FC = () => {
     <S.Header>
       <S.MenuList>
         {MENUS.map((item) => (
-          <S.MenuItem isActive={pathname === item.pathname}>
+          <S.MenuItem $isActive={pathname === item.pathname} key={item.pathname}>
             <Link to={item.pathname}>{item.label}</Link>
           </S.MenuItem>
         ))}
